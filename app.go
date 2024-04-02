@@ -13,8 +13,8 @@ func AtopOffset[T any](addr *T, offset int) uintptr {
 	return uintptr(unsafe.Pointer(addr)) + uintptr(offset)
 }
 
-func Atov[T, E any](addr *T, offset int) E {
-	return *Ptoa[E](AtopOffset(addr, offset))
+func Atov[T, E any](addr *T, offset int) *E {
+	return Ptoa[E](AtopOffset(addr, offset))
 }
 
 func Ptoa[T any](iptr uintptr) *T {
